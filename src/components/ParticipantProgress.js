@@ -40,6 +40,9 @@ export class ParticipantProgress extends Component {
 
         const stringPercent = this.props.displayProgress  ? `(${this.props.progressPercentage}%)` : '';
 
+        // NEW
+        const extraCredibility = participant.extraCredibility;
+
         const onNextPost = () => {
             if (nextPostEnabled) {
                 this.props.onNextPost();
@@ -86,6 +89,16 @@ export class ParticipantProgress extends Component {
                                               className="transform translate-y-2" />
                             <ChangeLabel change={this.props.credibilityChange} />
                         </p>}
+
+                    {displayCredibility &&
+                        <p className="text-xl">
+                            <CheckCircleIcon className="align-bottom mr-1" />
+                            <span className="inline-block text-lg w-26">
+                                Extra Credibility:
+                            </span>
+                            <CredibilityLabel credibility={extraCredibility}
+                                              className="transform translate-y-2" />
+                        </p>}    
 
                     <div onClick={onNextPost}
                          title={nextPostEnabled || this.props.hideTooltip ? "" :

@@ -569,6 +569,7 @@ export class GameParticipant {
     followers; // Number
     credibilityHistory; // Number[]
     followerHistory; // Number[]
+    extraCredibility; // NEW
 
     constructor(participantID, credibility, followers,
                 postInteractions, credibilityHistory, followerHistory) {
@@ -585,6 +586,9 @@ export class GameParticipant {
         this.postInteractions = postInteractions || [];
         this.credibilityHistory = credibilityHistory || [credibility];
         this.followerHistory = followerHistory || [followers];
+
+        // NEW
+        this.extraCredibility = Math.floor(Math.random() * (100 - 1) + 1);
     }
 
     addReaction(interaction, credibilityChange, followersChange) {
@@ -596,6 +600,9 @@ export class GameParticipant {
         this.followers = adjustFollowers(this.followers, followersChange);
         this.credibilityHistory.push(this.credibility);
         this.followerHistory.push(this.followers);
+
+        //NEW
+        this.extraCredibility = Math.floor(Math.random() * (100 - 1) + 1);
     }
 
     static interactionsToJSON(interactions) {
